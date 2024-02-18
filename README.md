@@ -1,4 +1,4 @@
-# College Community Connect
+# PCCOE-Community-Connect
 
 Welcome to College Community Connect, a platform for efficient college community management, volunteering recruitment, and meaningful connections.
 
@@ -13,6 +13,9 @@ The goal is to develop a platform for college clubs and communities to manage th
 - User authentication
 - Community engagement
 
+## Link of deployed project
+
+    https://pccoe-community-connect.vercel.app/
 
 ## Building and deploying in production
 
@@ -22,6 +25,29 @@ If you wanted to run this site in production, you should install modules then bu
     npm run build
     npm start
 
+You should run `npm run build` again any time you make changes to the site.
+
+Note: If you are already running a webserver on port 80 (e.g. Macs usually have the Apache webserver running on port 80) you can still start the example in production mode by passing a different port as an Environment Variable when starting (e.g. `PORT=3000 npm start`).
+
+## Configuring
+
+
+## How to run on localhost
+
+Make sure you have nodejs and npm packages already installed on you system and run the following commands
+
+    git clone https://github.com/empsloc/HM0008_Akatsuki
+    cd HM0008_Akatsuki
+    npm run dev
+    
+To run prisma and mongodb
+
+    npx prisma generate
+    npx prisma init --datasource-provider mongodb
+    
+ 
+    
+            
 You should run `npm run build` again any time you make changes to the site.
 
 Note: If you are already running a webserver on port 80 (e.g. Macs usually have the Apache webserver running on port 80) you can still start the example in production mode by passing a different port as an Environment Variable when starting (e.g. `PORT=3000 npm start`).
