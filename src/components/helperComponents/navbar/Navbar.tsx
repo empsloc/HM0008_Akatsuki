@@ -20,11 +20,11 @@ const Navbar=()=>{
                 </div>
                 <div className="col-span-1 hidden md:flex items-center gap-5 font-bold justify-end">
                 <div className="  flex justify-end items-center mr-3"><ThemeToggleButton/></div>
-                    <Link href="/"> <div className="">HomeL</div></Link>
+                    <Link href="/"> <div className="">Home</div></Link>
                     <Link href="/communities"> <div className="">Communities</div></Link>
-                    <Link href="/">  <div className="">Clubs</div></Link>
+                    <Link href="/club">  <div className="">Clubs</div></Link>
                 
-                    <Link href="/club"  className="">Login</Link>
+                    <Link href="/login"  className="">Login</Link>
                 </div>
             </div>
         </div>
