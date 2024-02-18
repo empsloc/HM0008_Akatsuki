@@ -9,8 +9,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PCCOE-Community-Connect",
-  description: "Akatsuki",
+  title: "PCCOE-Community-Connect ",
+  description: "Akatsuki ",
 };
 
 export default function RootLayout({
