@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid()) @map("_id")
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid()) @map("_id")
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  Post          Post[]
+  Comment       Comment[]
+}
+
+model VerificationToken {
+  identifier String   @id @map("_id")
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Club {
+  id       String    @id @default(cuid()) @map("_id")
+  slug     String    @unique
+  title    String
+  img      String?
+  SubClubs SubClub[]
+}
+
+model SubClub {
+  id      String  @id @default(cuid()) @map("_id")
+  slug    String  @unique
+  title   String
+  img     String?
+  subSlug String
+  club    Club    @relation(fields: [subSlug], references: [slug])
+}
+
+model Community {
+  id       String @id @default(cuid()) @map("_id")
+  comSlug  String @unique
+  comName  String
+  ComImage String
+  posts    Post[]
+}
+
+model Post {
+  id          String     @id @default(cuid()) @map("_id")
+  postSlug    String     @unique
+  title       String
+  desc1       String
+  desc2       String
+  likes       Int
+  commentNos  Int
+  userEmail   String
+  comments    Comment[]
+  user        User       @relation(fields: [userEmail], references: [email])
+  Community   Community? @relation(fields: [communityId], references: [id])
+  communityId String?
+}
+
+model Comment {
+  id          String   @id @default(cuid()) @map("_id")
+  commentSlug String   @unique
+  user        User     @relation(fields: [userId], references: [id])
+  time        DateTime @default(now())
+  desc        String
+
+  Post   Post?   @relation(fields: [postId], references: [id])
+  postId String?
+  userId String
+}
