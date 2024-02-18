@@ -12,7 +12,7 @@ const Footer = () => {
               <div className="h-10 w-10 relative">
                 <Image src="/ayanokoji-modified.png" alt="" fill />
               </div>
-              <div className="text-xl font-bold">Feweb</div>
+              <div className="text-xl font-bold">Fewbe</div>
             </div>
 
             <div className="md:mr-20">

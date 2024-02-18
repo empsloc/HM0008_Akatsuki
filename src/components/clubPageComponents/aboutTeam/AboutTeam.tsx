@@ -48,7 +48,7 @@ const AboutTeam = () => {
                       <Card>
                       <CardContent className="flex flex-col aspect-square items-start justify-center p-6 gap-6">
                           <span className="text-4xl font-semibold">
-                            Even Organization
+                            Event Organization
 
                           </span>
                           CESA excels in organizing engaging events and activities 
