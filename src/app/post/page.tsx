@@ -56,7 +56,7 @@ const PostPage = async (props:any) => {
 
       
       </div> */}
-      {postData[0].id}
+     abc
     </MaxWidthWrapper>
   );
 };
