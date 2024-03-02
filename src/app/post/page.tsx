@@ -1,5 +1,5 @@
 
-import MaxWidthWrapper from "@/components/helperComponents/MaxWidthWrapper/MaxWidthWrapper";
+import PostPageComponent from "@/components/postComponents/postPageComponent/PostPageComponent";
 
 const baseURL = process.env.NEXTAUTH_URL
 const getData = async (postId:any) => {
@@ -21,6 +21,7 @@ const getData = async (postId:any) => {
 
 
 const PostPage = async (props:any) => {
+  
   // const postData = await getData(props.searchParams.postId)
 // console.log(postData)
   
@@ -35,29 +36,7 @@ const PostPage = async (props:any) => {
 
 
   return (
-    <MaxWidthWrapper>
-      {/* <div className="flex flex-col gap-5">
-        <div className="">
-          <div className="">
-            <PostContainer postData ={postData[0]} />
-          </div>
-        </div>
-
-        <AddComment postData ={postData[0]}/>
-
-
-        <Comments postData={postData[0]} />
-
-
-       
-
-
-
-
-      
-      </div> */}
-     {props.searchParams.postId}
-    </MaxWidthWrapper>
+    <PostPageComponent postId={props.searchParams.postId}/>
   );
 };
 
