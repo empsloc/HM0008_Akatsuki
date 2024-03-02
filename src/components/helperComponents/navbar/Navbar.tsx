@@ -1,10 +1,13 @@
+"use client"
 import { ThemeToggleButton } from "@/components/ThemeComponents/themeToggleButton/ThemeToggleButton"
 import { Menu } from "lucide-react"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import MaxWidthWrapper from "../MaxWidthWrapper/MaxWidthWrapper"
+import { AccountButton } from "./accountButton"
 
 const Navbar=()=>{
-
+    const {  data: session, status } = useSession();
     return(
         <MaxWidthWrapper>
         <div className=" py-5">
@@ -24,7 +27,7 @@ const Navbar=()=>{
                     <Link href="/communities"> <div className="">Communities</div></Link>
                     <Link href="/club">  <div className="">Clubs</div></Link>
                 
-                    <Link href="/login"  className="">Login</Link>
+                    {status==="authenticated"?(<AccountButton/>):(<Link href="/login"  className="">Login</Link>)}
                 </div>
             </div>
         </div>

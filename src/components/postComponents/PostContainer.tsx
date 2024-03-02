@@ -1,16 +1,21 @@
+
 import { Heart, Pen, Share } from "lucide-react";
 import Image from "next/image";
 
-const PostContainer = () => {
+
+
+const PostContainer =  (props:any) => {
+
   return (
     <div className="">
       <div className="">
         <div className="p-12 flex flex-col gap-5 bg-secondary rounded-2xl shadow">
           <div className="text-xl font-semibold">
-            Web3 Workshop: Exploring the Future of Decentralization
+            
+            {props.postData.title}
           </div>
-          <div className=" font-medium">
-            🚀 Hey, fellow blockchain enthusiasts and decentralization
+          <div className=" " dangerouslySetInnerHTML={{ __html: props?.postData.details }} />
+            {/* 🚀 Hey, fellow blockchain enthusiasts and decentralization
             advocates! 💡 CryptoConnect21 is excited to invite you to our
             upcoming workshop on Web3 and the future of decentralized
             technologies. Join us for an immersive session where we'll delve
@@ -24,17 +29,19 @@ const PostContainer = () => {
             security, and censorship resistance. Blockchain Basics: Dive into
             the fundamentals of blockchain technology and its role as the
             backbone of Web3. Learn about distributed ledgers, consensus
-            mechanisms, and the power of immutable data.
-          </div>
+            mechanisms, and the power of immutable data. */}
+
+            {/* {props.postData.details} */}
+          
 
           <div className=" flex items-center gap-5 justify-between">
             <div className=" flex items-center gap-5">
               <div className="h-16 w-16 relative ">
-                <Image className="" src="/ayanokoji-modified.png" alt="" fill />
+                <Image className="rounded-full" src={props.postData.user.image} alt="" fill />
               </div>
               <div className="">
-                <div className="font-semibold">Atharva Bokade</div>
-                <div className="text-sm">10 min Ago</div>
+                <div className="font-semibold">{props.postData.user.name}</div>
+                <div className="text-sm">{props.postData.time.substring(0,10)}</div>
               </div>
             </div>
 
@@ -45,10 +52,10 @@ const PostContainer = () => {
             <div className="">
               <div className="flex gap-7">
                 <div className="flex gap-3">
-                  <Heart />52 Likes
+                  <Heart />{props.postData.likesNo} Likes
                 </div>
                 <div className="flex gap-3">
-                  <Pen />10 Comments
+                  <Pen />{props.postData.commentNos} Comments
                 </div>
               </div>
             </div>

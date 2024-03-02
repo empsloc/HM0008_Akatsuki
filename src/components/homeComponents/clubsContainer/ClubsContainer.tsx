@@ -2,29 +2,32 @@ import { ArrowRight, Club } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const ClubsContainer =  () => {
 
+const ClubsContainer =  (props:any) => {
+  console.log(props.allclubs)
 
+ 
+  
   return (
     <div className="">
       <div className="text-2xl font-bold my-10">Clubs Provided By College</div>
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-16">
        
-          <Link href ="/club?club=cesa" className="" >
+          {props.allclubs?.map((item:any)=><Link  key="_id" href ={`/club?clubId=${item.id}`} className="" >
             <div className="">
               <div className="flex flex-col justify-center shadow-md rounded-xl dark:bg-slate-900 dark:shadow-black">
                 <div className="relaive h-48 md:h-64 w-full  relative">
                   <Image
                     className="rounded-xl shadow-lg"
-                    src="/aimsa.png"
+                    src={`${item.image}`}
                     alt=""
                     fill
                   />
                 </div>
                 <div className="p-7 md:p-10 flex flex-col gap-5">
-                  <div className="">AIMSA</div>
+                  <div className="">{item.shortForm}</div>
                   <div className="font-semibold text-2xl">
-                  Artificial Intelligence and Machine Learning Students Association                  </div>
+                  {item.name}                </div>
                   <div className="flex justify-between">
                     <div className="font-medium flex gap-3">
                       <div className="">
@@ -42,10 +45,10 @@ const ClubsContainer =  () => {
                 </div>
               </div>
             </div>
-          </Link>
+          </Link>)}
 
 
-          <Link href ="/club?club=cesa" className="" >
+          {/* <Link href ="/club?club=cesa" className="" >
             <div className="">
               <div className="flex flex-col justify-center shadow-md rounded-xl dark:bg-slate-900 dark:shadow-black">
                 <div className="relaive h-48 md:h-64 w-full  relative">
@@ -186,7 +189,7 @@ const ClubsContainer =  () => {
                 </div>
               </div>
             </div>
-          </Link>
+          </Link> */}
       
       </div>
     </div>

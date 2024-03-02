@@ -3,10 +3,10 @@ import Footer from "@/components/helperComponents/footer/Footer";
 import Navbar from "@/components/helperComponents/navbar/Navbar";
 import AuthProvider from "@/providers/AuthProvider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "PCCOE-Community-Connect ",
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}> <ThemeProvider
+      <body > <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem

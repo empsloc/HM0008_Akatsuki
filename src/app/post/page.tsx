@@ -1,69 +1,63 @@
+
 import MaxWidthWrapper from "@/components/helperComponents/MaxWidthWrapper/MaxWidthWrapper";
 import PostContainer from "@/components/postComponents/PostContainer";
+
+import AddComment from "@/components/postComponents/addComment/AddComment";
 import Comments from "@/components/postComponents/comments/Comments";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Plus } from "lucide-react";
-const PostPage = () => {
+const baseURL = process.env.NEXTAUTH_URL
+const getData = async (postId:any) => {
+    
+ 
+    
+  const res = await fetch(`http://localhost:3000/api/getPostByPostId?postId=${postId}`, {
+    cache: "no-store",
+  });
+  
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+};
+
+
+
+
+const PostPage = async (props:any) => {
+  const postData = await getData(props.searchParams.postId)
+// console.log(postData)
+  
+
+    
+
+
+ 
+
+
+
+
+
   return (
     <MaxWidthWrapper>
       <div className="flex flex-col gap-5">
         <div className="">
           <div className="">
-            <PostContainer />
+            <PostContainer postData ={postData[0]} />
           </div>
         </div>
 
-        <div className="mt-7 flex flex-col gap-7">
-          <Dialog>
-            <DialogTrigger asChild>
-              <div>
-                {" "}
-                <div className="flex items-center gap-3 p-3 border rounded-full w-max">
-            <Plus />
-            Add a comment
-          </div>
-              </div>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Give a comment</DialogTitle>
-                <DialogDescription>
-                  Please refrain from using strong language
-                </DialogDescription>
-              </DialogHeader>
-              <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-1 items-center gap-4 flex-col">
-                  <Label   htmlFor="name" className="text-right">
-                    <div className="flex justify-start">Comment</div>
-                  </Label>
-                  <Textarea
-                    id="name"
-                    defaultValue=""
-                    className="col-span-3"
-                  />
-                </div>
-                
-              </div>
-              <DialogFooter>
-                <Button type="submit">Comment</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-          
-          <Comments />
-          
-        </div>
+        <AddComment postData ={postData[0]}/>
+
+
+        <Comments postData={postData[0]} />
+
+
+       
+
+
+
+
+      
       </div>
     </MaxWidthWrapper>
   );

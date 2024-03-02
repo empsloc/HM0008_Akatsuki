@@ -2,20 +2,20 @@ import { ArrowRight, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-
-const CommunitiesContainer =  () => {
-
+const CommunitiesContainer =  (props:any) => {
+  
 
   
   return (
+    
     <div className="">
       <div className="text-2xl font-bold my-10">Browse Communities</div>
 
       <div className=" grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1   gap-5">
 
 
-        <div  className="">
-          <Link href="communities" className="">
+        {props.allCommunities.map((item:any)=><div key="_id"  className="">
+          <Link href={`/communities?communityId=${item.id}`} className="">
             <div className="bg--400  p-5 rounded  bg-secondary">
               <div className="flex md:justify-center justify-between">
                 <div className="flex gap-3 items-center">
@@ -24,7 +24,7 @@ const CommunitiesContainer =  () => {
                       <Image src="/ayanokoji-modified.png" alt="" fill />
                     </div>
                   </div>
-                  <div className="md:text-lg lg:text-lg font-medium">Blockchain</div>
+                  <div className="md:text-lg lg:text-lg font-medium">{item.name}</div>
                 </div>
                 <div className="md:hidden">
                   <ArrowRight />
@@ -32,67 +32,9 @@ const CommunitiesContainer =  () => {
               </div>
             </div>
           </Link>
-        </div>
+        </div>)}
 
-        <div  className="">
-          <Link href="communities" className="">
-            <div className="bg--400  p-5 rounded  bg-secondary">
-              <div className="flex md:justify-center justify-between">
-                <div className="flex gap-3 items-center">
-                  <div className="">
-                    <div className="h-10 w-10 relative">
-                      <Image src="/ayanokoji-modified.png" alt="" fill />
-                    </div>
-                  </div>
-                  <div className="md:text-lg lg:text-lg font-medium">Web 3</div>
-                </div>
-                <div className="md:hidden">
-                  <ArrowRight />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        <div  className="">
-          <Link href="communities" className="">
-            <div className="bg--400  p-5 rounded  bg-secondary">
-              <div className="flex md:justify-center justify-between">
-                <div className="flex gap-3 items-center">
-                  <div className="">
-                    <div className="h-10 w-10 relative">
-                      <Image src="/ayanokoji-modified.png" alt="" fill />
-                    </div>
-                  </div>
-                  <div className="md:text-lg lg:text-lg font-medium">Andorid dev</div>
-                </div>
-                <div className="md:hidden">
-                  <ArrowRight />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        <div  className="">
-          <Link href="communities" className="">
-            <div className="bg--400  p-5 rounded  bg-secondary">
-              <div className="flex md:justify-center justify-between">
-                <div className="flex gap-3 items-center">
-                  <div className="">
-                    <div className="h-10 w-10 relative">
-                      <Image src="/ayanokoji-modified.png" alt="" fill />
-                    </div>
-                  </div>
-                  <div className="md:text-lg lg:text-lg font-medium">Web dev</div>
-                </div>
-                <div className="md:hidden">
-                  <ArrowRight />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
+      
 
 
 

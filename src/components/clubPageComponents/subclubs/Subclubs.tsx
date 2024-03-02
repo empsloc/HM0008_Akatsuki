@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight } from "lucide-react";
 
-const Subclubs = () => {
+const Subclubs = (props:any) => {
   return (
     <div className="">
       <div className="text-3xl font-semibold">Clubs Provided by the Team</div>

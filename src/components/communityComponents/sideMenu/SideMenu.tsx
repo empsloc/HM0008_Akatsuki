@@ -1,10 +1,15 @@
-import { Book, BookA, GraduationCap, Home, PlayIcon, TrendingUp } from "lucide-react"
 
-const SideMenu=()=>{
+import { Book, BookA, GraduationCap, Home, PlayIcon, TrendingUp } from "lucide-react";
+
+
+
+const SideMenu=  (props:any)=>{
+
+    // console.log(data)
     return(
         <div className="">
             <div className="flex flex-col gap-5 p-5 rounded-l-xl shadow-md">
-                <div className="flex  gap-3 items-center font-bold"><Home/>Home Web 3</div>
+                <div className="flex  gap-3 items-center font-bold"><Home/>Home {props.communityData.name}</div>
                 <div className="flex  gap-3 items-center font-bold"><Book/>Topics</div>
                 <div className="flex  gap-3 items-center font-bold"><TrendingUp/>Trending</div>
 

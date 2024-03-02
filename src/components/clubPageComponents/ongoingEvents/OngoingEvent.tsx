@@ -1,4 +1,4 @@
-const OnGoingEvent = () => {
+const OnGoingEvent = (props:any) => {
   return (
     <div className=" ">
       <div className="text-3xl font-semibold">Ongoing Event</div>

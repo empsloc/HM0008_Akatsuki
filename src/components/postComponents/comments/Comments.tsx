@@ -1,30 +1,49 @@
+
 import Image from "next/image";
 
-const Comments = () => {
+
+const baseURL = process.env.NEXTAUTH_URL||"http://localhost:3000"
+const getCommentsByPostId = async (postId:any) => {
+    
+ 
+    
+  const res = await fetch(`${baseURL}/api/getCommentsByPostId?postId=${postId}`, {
+    cache: "no-store",
+  });
+  
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+};
+
+
+const Comments =  async (props:any) => {
+  const comments = await getCommentsByPostId(props.postData.id)
+  // console.log(comments)
   return (
     <div className="flex flex-col gap-16">
-      <div className="">
+      {comments.map((item:any)=><div key={item.id} className="">
         <div className="grid grid-cols-7 items-center gap-5">
           <div className="hidden  col-span-1 md:flex items-center justify-center">
             <div className="h-10 w-10 relative">
-              <Image src="/ayanokoji-modified.png" alt="" fill />
+              <Image className="rounded-full" src={item.user.image} alt="" fill />
             </div>
           </div>
           <div className="col-span-7 md:col-span-6">
             <div className="">
-              <div className="font-semibold">CryptoEnthusiast92</div>
-              <div className="text-sm"> 10 min ago</div>
+              <div className="font-semibold">{item.user.name} </div>
+              <div className="text-sm"> {item.time.substring(0,10)}</div>
             </div>
             <div className="mt-3">
-              Love the initiative! Excited to dive deeper into the world of Web3
-              and explore its potential for reshaping the digital landscape.
-              Count me in for the workshop! 🚀🔗 #CryptoEnthusiast #Web3Adoption
+              {item.details}
             </div>
           </div>
         </div>
-      </div>
+      </div>)}
 
-      <div className="">
+      {/* <div className="">
         <div className="grid grid-cols-7 items-center gap-5">
           <div className="hidden  col-span-1 md:flex items-center justify-center">
             <div className="h-10 w-10 relative">
@@ -227,7 +246,7 @@ const Comments = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

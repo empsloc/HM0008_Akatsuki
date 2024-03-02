@@ -59,39 +59,73 @@ model VerificationToken {
 
 model Club {
   id       String    @id @default(cuid()) @map("_id")
-  slug     String    @unique
-  title    String
-  img      String?
+  shortForm     String    
+  name    String
+  aboutClub    String
+  presidentName    String
+  presidentDetails    String
+
+  vicePresidentName    String
+  vicePresidentDetails    String
+  clubSpecialityHeading1   String
+  clubSpecialityDetails1    String
+   clubSpecialityHeading2   String
+  clubSpecialityDetails2    String
+   clubSpecialityHeading3   String
+  clubSpecialityDetails3    String
+
+  ongoingEventName    String
+  ongoingEventTimelineHeading1   String
+  ongoingEventTimelineDetails1 String
+  ongoingEventTimelineHeading2   String
+  ongoingEventTimelineDetails2 String
+  ongoingEventTimelineHeading3   String
+  ongoingEventTimelineDetails3 String
+  ongoingEventTimelineHeading4   String
+  ongoingEventTimelineDetails4 String
+  ongoingEventTimelineHeading5   String
+  ongoingEventTimelineDetails5 String
+  image    String
+
+ 
   SubClubs SubClub[]
 }
 
 model SubClub {
   id      String  @id @default(cuid()) @map("_id")
-  slug    String  @unique
-  title   String
-  img     String?
-  subSlug String
-  club    Club    @relation(fields: [subSlug], references: [slug])
+  shortForm    String  
+  subClubDetails   String
+  subClubLink String
+  clubId String
+  club    Club    @relation(fields: [clubId], references: [id])
 }
 
 model Community {
   id       String @id @default(cuid()) @map("_id")
-  comSlug  String @unique
-  comName  String
-  ComImage String
+  name  String 
+  tags Tag[]
   posts    Post[]
+}
+
+model Tag{
+     id       String @id @default(cuid()) @map("_id")
+     name String
+     communityID String 
+     community Community @relation(fields: [communityID], references: [id])
 }
 
 model Post {
   id          String     @id @default(cuid()) @map("_id")
-  postSlug    String     @unique
-  title       String
-  desc1       String
-  desc2       String
-  likes       Int
-  commentNos  Int
+    time DateTime @default(now())
+   title       String
+  details String
+  subHeading1       String?
+  subDetails1       String?
+  likesNo       Int @default(0)
+  commentNos  Int @default(0)
   userEmail   String
   comments    Comment[]
+  
   user        User       @relation(fields: [userEmail], references: [email])
   Community   Community? @relation(fields: [communityId], references: [id])
   communityId String?
@@ -99,12 +133,13 @@ model Post {
 
 model Comment {
   id          String   @id @default(cuid()) @map("_id")
-  commentSlug String   @unique
-  user        User     @relation(fields: [userId], references: [id])
+ 
+  user        User     @relation(fields: [userEmail], references: [email])
   time        DateTime @default(now())
-  desc        String
+  details        String
+  
 
   Post   Post?   @relation(fields: [postId], references: [id])
   postId String?
-  userId String
+  userEmail String
 }
