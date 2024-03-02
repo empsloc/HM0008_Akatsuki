@@ -21,7 +21,7 @@ const getData = async (postId:any) => {
 
 
 const PostPage = async (props:any) => {
-  const postData = await getData(props.searchParams.postId)
+  // const postData = await getData(props.searchParams.postId)
 // console.log(postData)
   
 
@@ -56,7 +56,7 @@ const PostPage = async (props:any) => {
 
       
       </div> */}
-     abcde
+     {props.searchParams.postId}
     </MaxWidthWrapper>
   );
 };
