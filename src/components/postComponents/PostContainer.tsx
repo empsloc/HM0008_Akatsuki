@@ -1,23 +1,23 @@
 
 
-const getData = async (postId:any) => {
+// const getData = async (postId:any) => {
     
  
     
-  const res = await fetch(`http://localhost:3000/api/getPostByPostId?postId=${postId}`, {
-    cache: "no-store",
-  });
+//   const res = await fetch(`http://localhost:3000/api/getPostByPostId?postId=${postId}`, {
+//     cache: "no-store",
+//   });
   
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
+//   if (!res.ok) {
+//     throw new Error("Failed");
+//   }
 
-  return res.json();
-};
+//   return res.json();
+// };
 
 
 const PostContainer = async (props:any) => {
-    const postData = await getData(props.postId)
+    // const postData = await getData(props.postId)
     // console.log(postData)
   return (
     // <div className="">
@@ -81,7 +81,7 @@ const PostContainer = async (props:any) => {
     //   </div>
     // </div>
 
-    <div className="">Post id is {props.postId}</div>
+    <div className="">Post id is abc {props.postId}</div>
 
    
   );
