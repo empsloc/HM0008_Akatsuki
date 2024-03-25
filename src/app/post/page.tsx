@@ -1,13 +1,14 @@
 
 import MaxWidthWrapper from "@/components/helperComponents/MaxWidthWrapper/MaxWidthWrapper";
 import PostContainer from "@/components/postComponents/PostContainer";
-
-const baseURL = process.env.NEXTAUTH_URL
+import AddComment from "@/components/postComponents/addComment/AddComment";
+import Comments from "@/components/postComponents/comments/Comments";
+const baseURL = process.env.NEXTAUTH_URL;
 const getData = async (postId:any) => {
     
  
     
-  const res = await fetch(`http://localhost:3000/api/getPostByPostId?postId=${postId}`, {
+  const res = await fetch(`${baseURL}/api/getPostByPostId?postId=${postId}`, {
     cache: "no-store",
   });
   
@@ -23,7 +24,7 @@ const getData = async (postId:any) => {
 
 const PostPage = async (props:any) => {
   
-  const postId = await props.searchParams.postId
+  const postData = await getData(props.searchParams.postId)
 // console.log(postId)
   
 
@@ -43,15 +44,15 @@ const PostPage = async (props:any) => {
     <div className="flex flex-col gap-5">
         <div className="">
           <div className="">
-            <PostContainer postId ={postId} />
+            <PostContainer postData ={postData[0]} />
           </div>
 
         
         </div>
 
-        {/* <AddComment postData ={postData[0]}/>
+        <AddComment postData ={postData[0]}/>
 
-        <Comments postData = {postData[0]}/> */}
+        <Comments postData = {postData[0]}/>
         
         </div>
         </MaxWidthWrapper>

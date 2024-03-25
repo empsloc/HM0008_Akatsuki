@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/auth/[...nextauth]/route.js", "src/app/api/clubs/route.js", "src/app/api/clubs/route.js", "src/app/api/communities/routejs", "src/app/api/posts/route.js", "src/components/communityComponents/singlePost/SinglePost.tsx", "src/components/postComponents/addComment/AddComment.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/auth/[...nextauth]/route.js", "src/app/api/clubs/route.js", "src/app/api/clubs/route.js", "src/app/api/communities/routejs", "src/app/api/posts/route.js", "src/components/communityComponents/singlePost/SinglePost.tsx", "src/components/postComponents/addComment/AddComment.tsx", "src/components/postComponents/PostContainer.tsx"],
   "exclude": ["node_modules"]
 }
