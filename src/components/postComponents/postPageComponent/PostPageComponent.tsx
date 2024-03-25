@@ -1,7 +1,4 @@
-import MaxWidthWrapper from "@/components/helperComponents/MaxWidthWrapper/MaxWidthWrapper";
-import PostContainer from "../PostContainer";
-import AddComment from "../addComment/AddComment";
-import Comments from "../comments/Comments";
+
 const getData = async (postId:any) => {
     
  
@@ -16,33 +13,27 @@ const getData = async (postId:any) => {
   
     return res.json();
   };
-const PostPageComponent= async (props:any)=>{
-
-     const postData = await getData(props.postId)
+const PostPageComponent= async  (props:any)=>{
+  console.log(props)
+const postData = await getData(props.se)
+    
     return(
-<MaxWidthWrapper>
-      <div className="flex flex-col gap-5">
-        <div className="">
-          <div className="">
-            <PostContainer postData ={postData[0]} />
-          </div>
-        </div>
 
-        <AddComment postData ={postData[0]}/>
+      // <div className="flex flex-col gap-5">
+      //   <div className="">
+      //     <div className="">
+      //       <PostContainer postData ={postData[0]} />
+      //     </div>
+      //   </div>
 
-
-        <Comments postData={postData[0]} />
+      //   <AddComment postData ={postData[0]}/>
 
 
-       
-
-
-
-
+      //   <Comments postData={postData[0] />
+      //   </div>
+      <div className="">asd</div>
       
-      </div>
-     {/* {props.searchParams.postId} */}
-    </MaxWidthWrapper>
+    
     )
 }
 
