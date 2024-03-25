@@ -1,5 +1,6 @@
 
 import MaxWidthWrapper from "@/components/helperComponents/MaxWidthWrapper/MaxWidthWrapper";
+import PostContainer from "@/components/postComponents/PostContainer";
 
 const baseURL = process.env.NEXTAUTH_URL
 const getData = async (postId:any) => {
@@ -41,11 +42,11 @@ const PostPage = async (props:any) => {
 
     <div className="flex flex-col gap-5">
         <div className="">
-          {/* <div className="">
+          <div className="">
             <PostContainer postId ={postId} />
-          </div> */}
+          </div>
 
-          <div className="">{postId}</div>
+        
         </div>
 
         {/* <AddComment postData ={postData[0]}/>
